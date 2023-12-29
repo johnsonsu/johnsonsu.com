@@ -6,8 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
-        "deploy": "next export && touch out/.nojekyll && touch out/CNAME && echo \"johnsonsu.com\" >> out/CNAME && git add out/ && git commit -m \"Deploy Next.js to prod\" && git subtree push --prefix out origin prod"
+        "lint": "next lint"
     },
     "dependencies": {
         "next": "14.0.4",
