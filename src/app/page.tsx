@@ -25,7 +25,7 @@ export default function Home() {
                         () => setShowLinks(true),
                     ]}
                     preRenderFirstString={true}
-                    cursor={false}
+                    cursor={showLinks ? false: true}
                 ></TypeAnimation>
                 {showLinks && (
                     <div>
@@ -62,7 +62,7 @@ export default function Home() {
                                 "I'm currently working at Rails building a crypto exchnage 📈.\n\nMy most recent project is a the brand new Grindr Web 🏳️‍🌈.\n I lead the team to build the web app from scratch, and it's now live at:",
                                 () => setShowGrindrWeb(true),
                             ]}
-                            cursor={false}
+                            cursor={showGrindrWeb ? false: true}
                         />
                         <a
                             className="underline"
@@ -87,7 +87,7 @@ export default function Home() {
                             display: 'inline-block',
                         }}
                         sequence={[500, '\nHope you have a great day! ✌️']}
-                        cursor={false}
+                        cursor={true}
                     />
                 )}
             </div>
