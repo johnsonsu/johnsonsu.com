@@ -13,8 +13,6 @@ export default function Home() {
                     style={{ whiteSpace: 'pre-line', display: 'inline-block' }}
                     sequence={[
                         'Hello there!\n',
-                        500,
-                        'Hello there!\nNice meeting you here 🌊.',
                         200,
                         'Hello there!\nNice meeting you here 👋.',
                         500,
