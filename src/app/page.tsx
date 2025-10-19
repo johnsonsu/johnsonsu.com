@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation'
 
 export default function Home() {
     const [showLinks, setShowLinks] = useState(false)
-    const [showGrindrWeb, setShowGrindrWeb] = useState(false)
+    const [showWebsite, setShowWebsite] = useState(false)
     return (
         <main className="flex min-h-screen flex-col p-12 lg:p-24 ">
             <div className="mb-32 grid lg:max-w-5xl lg:w-full text-left text-lg">
@@ -24,7 +24,8 @@ export default function Home() {
                     ]}
                     preRenderFirstString={true}
                     cursor={showLinks ? false: true}
-                ></TypeAnimation>
+                    speed={80}
+                />
                 {showLinks && (
                     <div>
                         <ul className="underline mb-4">
@@ -55,29 +56,28 @@ export default function Home() {
                             }}
                             sequence={[
                                 500,
-                                "I'm currently working at Rails building a crypto exchnage 📈.",
-                                500,
-                                "I'm currently working at Rails building a crypto exchnage 📈.\n\nMy most recent project is a the brand new Grindr Web 🏳️‍🌈.\n I lead the team to build the web app from scratch, and it's now live at:",
-                                () => setShowGrindrWeb(true),
+                                "I'm currently working at Rails building a crypto perp exchange 📈.",
+                                () => setShowWebsite(true),
                             ]}
-                            cursor={showGrindrWeb ? false: true}
+                            cursor={showWebsite ? false: true}
+                            speed={80}
                         />
                         <a
                             className="underline"
                             style={{
-                                visibility: showGrindrWeb
+                                visibility: showWebsite
                                     ? 'visible'
                                     : 'hidden',
                             }}
-                            href="https://web.grindr.com"
+                            href="https://trade.rails.xyz"
                             rel="noreferrer"
                             target="_blank"
                         >
-                            https://web.grindr.com.
+                            https://trade.rails.xyz.
                         </a>
                     </div>
                 )}
-                {showGrindrWeb && (
+                {showWebsite && (
                     <TypeAnimation
                         className="w-full"
                         style={{
@@ -86,6 +86,7 @@ export default function Home() {
                         }}
                         sequence={[500, '\nHope you have a great day! ✌️']}
                         cursor={true}
+                        speed={80}
                     />
                 )}
             </div>
