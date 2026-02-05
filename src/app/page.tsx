@@ -28,9 +28,11 @@ export default function Home() {
                 />
                 {showLinks && (
                     <div>
-                        <ul className="underline mb-4">
+                        <ul className="mb-4">
                             <li>
+                                <span>🤖 &nbsp;</span>
                                 <a
+                                    className='underline'
                                     href="https://github.com/johnsonsu"
                                     rel="noreferrer"
                                     target="_blank"
@@ -39,7 +41,9 @@ export default function Home() {
                                 </a>
                             </li>
                             <li>
+                                <span>💬 &nbsp;</span>
                                 <a
+                                    className='underline'
                                     href="https://www.linkedin.com/in/johnsonsu/"
                                     rel="noreferrer"
                                     target="_blank"
@@ -62,6 +66,9 @@ export default function Home() {
                             cursor={showWebsite ? false: true}
                             speed={80}
                         />
+                        <span>
+                        🌐 &nbsp;
+                        </span>
                         <a
                             className="underline"
                             style={{
@@ -69,11 +76,11 @@ export default function Home() {
                                     ? 'visible'
                                     : 'hidden',
                             }}
-                            href="https://trade.rails.xyz"
+                            href="https://rails.xyz"
                             rel="noreferrer"
                             target="_blank"
                         >
-                            https://trade.rails.xyz.
+                           https://rails.xyz
                         </a>
                     </div>
                 )}
