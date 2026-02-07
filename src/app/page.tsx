@@ -116,9 +116,11 @@ export default function Home() {
         if (!active) return
 
         if (charIndex >= active.text.length) {
-            setSegmentIndex((index) => index + 1)
-            setCharIndex(0)
-            return
+            const advanceSegment = window.setTimeout(() => {
+                setSegmentIndex((index) => index + 1)
+                setCharIndex(0)
+            }, 0)
+            return () => window.clearTimeout(advanceSegment)
         }
 
         const char = active.text[charIndex]
