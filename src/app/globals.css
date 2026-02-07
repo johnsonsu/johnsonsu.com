@@ -3,8 +3,8 @@
 :root {
   --ink: #0e2331;
   --ink-soft: #36566d;
-  --surface: rgba(255, 255, 255, 0.72);
-  --surface-strong: rgba(247, 253, 255, 0.9);
+  --surface: #fdfefe;
+  --surface-strong: #f6fbff;
   --line: rgba(8, 120, 166, 0.2);
   --accent: #0a7aa2;
   --accent-strong: #035f85;
@@ -17,7 +17,7 @@
   --bg-c2: #eef5ff;
   --dot-frame: rgba(100, 54, 21, 0.18);
   --title-bg: rgba(255, 255, 255, 0.55);
-  --theme-chip-bg: rgba(255, 255, 255, 0.68);
+  --theme-chip-bg: #eef5fc;
   --theme-chip-line: rgba(8, 120, 166, 0.2);
   --theme-chip-text: #1a4258;
   --theme-chip-active-bg: #0a7aa2;
@@ -86,22 +86,18 @@
 body {
   color: var(--ink);
   background:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
     radial-gradient(circle at 20% 5%, var(--bg-a), transparent 38%),
     radial-gradient(circle at 88% 8%, var(--bg-b), transparent 30%),
     linear-gradient(145deg, var(--bg-c0) 0%, var(--bg-c1) 48%, var(--bg-c2) 100%);
+  background-size:
+    34px 34px,
+    34px 34px,
+    auto,
+    auto,
+    auto;
   min-height: 100vh;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 34px 34px;
-  opacity: 0.45;
 }
 
 .page-shell {
@@ -242,6 +238,8 @@ body::before {
 
 .terminal-cursor {
   color: var(--cursor);
+  display: inline-block;
+  width: 0.72ch;
   animation: cursor-blink 920ms steps(1) infinite;
 }
 
@@ -252,11 +250,11 @@ body::before {
 @keyframes cursor-blink {
   0%,
   49% {
-    opacity: 1;
+    visibility: visible;
   }
   50%,
   100% {
-    opacity: 0.14;
+    visibility: hidden;
   }
 }
 

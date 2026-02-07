@@ -33,9 +33,9 @@ const typingScript: ScriptSegment[] = [
     { text: '  ' },
     // { text: '[Works]', href: '/works' },
     { text: '\n\n' },
-    { text: 'Current mission: at ' },
+    { text: 'Current mission: building a crypto perpetual exchange at ' },
     { text: 'Rails', href: 'https://rails.xyz', external: true },
-    { text: ' building a crypto perpetual exchange.\n\n' },
+    { text: '.\n\n' },
     { text: 'Thanks for visiting.' },
 ]
 
