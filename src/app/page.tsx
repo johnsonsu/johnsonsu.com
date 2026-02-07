@@ -16,7 +16,7 @@ const typingScript: ScriptSegment[] = [
     { text: '$ loading identity map...\n\n' },
     { text: 'Hello, I am Johnson Su.\n' },
     {
-        text: 'I am a software engineer in Toronto focused on clean products and reliable systems.\n\n',
+        text: 'I am a full-stack software engineer in Toronto focused on building clean products and reliable systems.\n\n',
     },
     { text: 'Network:\n' },
     {
@@ -31,11 +31,11 @@ const typingScript: ScriptSegment[] = [
         external: true,
     },
     { text: '  ' },
-    { text: '[Works]', href: '/works' },
+    // { text: '[Works]', href: '/works' },
     { text: '\n\n' },
-    { text: 'Current mission: building at ' },
+    { text: 'Current mission: at ' },
     { text: 'Rails', href: 'https://rails.xyz', external: true },
-    { text: ' on crypto perpetual exchange infrastructure.\n\n' },
+    { text: ' building a crypto perpetual exchange.\n\n' },
     { text: 'Thanks for visiting.' },
 ]
 
