@@ -14,6 +14,7 @@ type TerminalShellProps = {
 }
 
 const themeStorageKey = 'preferred-theme'
+const skipHomeTypingKey = 'skip-home-typing-on-tab-nav'
 
 export default function TerminalShell({
     activeTab,
@@ -83,6 +84,13 @@ export default function TerminalShell({
         window.localStorage.setItem(themeStorageKey, nextTheme)
     }
 
+    function onHomeTabClick() {
+        setIsThemeMenuOpen(false)
+        if (activeTab !== 'home') {
+            window.sessionStorage.setItem(skipHomeTypingKey, '1')
+        }
+    }
+
     const themeLabel = theme === 'auto' ? 'Theme: Auto' : theme === 'dark' ? 'Theme: Dark' : 'Theme: Light'
 
     return (
@@ -142,7 +150,7 @@ export default function TerminalShell({
                             href="/"
                             className={`terminal-tab ${activeTab === 'home' ? 'terminal-tab-active' : ''}`}
                             aria-current={activeTab === 'home' ? 'page' : undefined}
-                            onClick={() => setIsThemeMenuOpen(false)}
+                            onClick={onHomeTabClick}
                         >
                             Home
                         </Link>

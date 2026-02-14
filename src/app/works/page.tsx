@@ -33,7 +33,7 @@ export default function WorksPage() {
     return (
         <TerminalShell activeTab="works">
             <div className="terminal-output works-output">
-                <p className="works-intro">Selected past experience</p>
+                <p className="works-intro">Past experience</p>
                 <div className="works-list">
                     {workHistory.map((work) => (
                         <article className="work-item" key={`${work.company}-${work.title}`}>

@@ -36,6 +36,7 @@ const typingScript: ScriptSegment[] = [
 ]
 
 const baseDelayMs = 28
+const skipHomeTypingKey = 'skip-home-typing-on-tab-nav'
 
 function getDelay(char: string) {
     if (char === '\n') return 120
@@ -48,11 +49,19 @@ export default function Home() {
     const [segmentIndex, setSegmentIndex] = useState(0)
     const [charIndex, setCharIndex] = useState(0)
     const [reduceMotion, setReduceMotion] = useState(false)
+    const [skipTypingFromTab] = useState(() => {
+        if (typeof window === 'undefined') return false
+        const shouldSkipTyping = window.sessionStorage.getItem(skipHomeTypingKey) === '1'
+        if (shouldSkipTyping) {
+            window.sessionStorage.removeItem(skipHomeTypingKey)
+        }
+        return shouldSkipTyping
+    })
 
-    const isDone = segmentIndex >= typingScript.length
+    const isDone = skipTypingFromTab || segmentIndex >= typingScript.length
 
     const visibleSegments = useMemo(() => {
-        if (reduceMotion) return typingScript
+        if (reduceMotion || skipTypingFromTab) return typingScript
 
         const complete = typingScript.slice(0, segmentIndex)
         if (isDone) return complete
@@ -61,7 +70,7 @@ export default function Home() {
         if (!active) return complete
 
         return [...complete, { ...active, text: active.text.slice(0, charIndex) }]
-    }, [charIndex, isDone, reduceMotion, segmentIndex])
+    }, [charIndex, isDone, reduceMotion, segmentIndex, skipTypingFromTab])
 
     useEffect(() => {
         const query = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -73,7 +82,7 @@ export default function Home() {
     }, [])
 
     useEffect(() => {
-        if (reduceMotion || isDone) return
+        if (reduceMotion || skipTypingFromTab || isDone) return
 
         const active = typingScript[segmentIndex]
         if (!active) return
@@ -93,7 +102,7 @@ export default function Home() {
         )
 
         return () => window.clearTimeout(timeout)
-    }, [charIndex, isDone, reduceMotion, segmentIndex])
+    }, [charIndex, isDone, reduceMotion, segmentIndex, skipTypingFromTab])
 
     function renderSegment(segment: ScriptSegment, index: number) {
         const key = `${segment.href || 'text'}-${index}`
