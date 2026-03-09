@@ -1,5 +1,14 @@
 import TerminalShell from '@/components/terminal-shell'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'Works',
+    description: 'Selected work history and past experience for Johnson Su.',
+    alternates: {
+        canonical: '/works',
+    },
+}
 
 const workHistory = [
     {

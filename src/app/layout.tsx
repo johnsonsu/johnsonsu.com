@@ -1,26 +1,39 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { IBM_Plex_Mono } from 'next/font/google'
+import './globals.css'
 
-const inter = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400"] });
+const ibmPlexMono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400'] })
 
 export const metadata: Metadata = {
-  title: "Johnson Su 🧑🏻‍💻",
-  description:
-    "Hi there 👋, I'm a full-stack software engineer from Toronto. Nice meeting you!",
-};
+    metadataBase: new URL('https://johnsonsu.com'),
+    title: {
+        default: 'Johnson Su',
+        template: '%s | Johnson Su',
+    },
+    description:
+        "Full-stack software engineer in Toronto focused on building clean products and reliable systems.",
+    alternates: {
+        canonical: '/',
+    },
+    openGraph: {
+        title: 'Johnson Su',
+        description:
+            'Full-stack software engineer in Toronto focused on building clean products and reliable systems.',
+        url: 'https://johnsonsu.com',
+        siteName: 'Johnson Su',
+        locale: 'en_CA',
+        type: 'website',
+    },
+}
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8"></meta>
-      </head>
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+    children,
+}: Readonly<{
+    children: React.ReactNode
+}>) {
+    return (
+        <html lang="en">
+            <body className={ibmPlexMono.className}>{children}</body>
+        </html>
+    )
 }
