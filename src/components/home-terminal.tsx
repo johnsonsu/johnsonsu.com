@@ -3,35 +3,42 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import TerminalShell from '@/components/terminal-shell'
+import { getTerminalToneClass, type TerminalTone } from '@/components/terminal-tone'
 
 type ScriptSegment = {
     text: string
+    tone?: TerminalTone
     href?: string
     external?: boolean
 }
 
 const typingScript: ScriptSegment[] = [
-    { text: '$ booting profile runtime...\n' },
-    { text: '$ loading identity map...\n\n' },
-    { text: 'Hello, I am Johnson Su.\n' },
+    { text: '$ booting profile runtime...\n', tone: 'command' },
+    { text: '$ loading identity map...\n\n', tone: 'command' },
+    { text: 'Hello, I am ' },
+    { text: 'Johnson Su', tone: 'entity' },
+    { text: '.\n' },
     {
         text: 'I am a full-stack software engineer in Toronto focused on building clean products and reliable systems.\n\n',
     },
-    { text: 'Network:\n' },
+    { text: 'Network:\n', tone: 'label' },
     {
         text: '[GitHub]',
         href: 'https://github.com/johnsonsu',
         external: true,
+        tone: 'entity',
     },
     { text: '  ' },
     {
         text: '[LinkedIn]',
         href: 'https://www.linkedin.com/in/johnsonsu/',
         external: true,
+        tone: 'entity',
     },
     { text: '\n\n' },
-    { text: 'Current mission: building a crypto perpetual exchange at ' },
-    { text: 'Rails', href: 'https://rails.xyz', external: true },
+    { text: 'Current mission: ', tone: 'label' },
+    { text: 'building a crypto perpetual exchange at ' },
+    { text: 'Rails', href: 'https://rails.xyz', external: true, tone: 'entity' },
     { text: '.\n\n' },
     { text: 'Thanks for visiting.' },
 ]
@@ -107,10 +114,20 @@ export default function HomeTerminal() {
 
     function renderSegment(segment: ScriptSegment, index: number) {
         const key = `${segment.href || 'text'}-${index}`
-        if (!segment.href) return <span key={key}>{segment.text}</span>
+        const className = segment.href
+            ? `typed-link ${getTerminalToneClass(segment.tone)}`
+            : getTerminalToneClass(segment.tone)
+
+        if (!segment.href) {
+            return (
+                <span className={className} key={key}>
+                    {segment.text}
+                </span>
+            )
+        }
         if (!segment.external) {
             return (
-                <Link key={key} className="typed-link" href={segment.href}>
+                <Link key={key} className={className} href={segment.href}>
                     {segment.text}
                 </Link>
             )
@@ -118,7 +135,7 @@ export default function HomeTerminal() {
         return (
             <a
                 key={key}
-                className="typed-link"
+                className={className}
                 href={segment.href}
                 rel="noreferrer"
                 target="_blank"
