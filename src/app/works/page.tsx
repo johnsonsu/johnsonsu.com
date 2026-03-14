@@ -40,8 +40,7 @@ const currentWork: WorkEntry = {
     companyUrl: 'https://rails.xyz',
     dates: 'Feb 2025 - Present',
     employmentType: 'Permanent Full-time',
-    location: 'Toronto, Ontario, Canada',
-    workMode: 'Hybrid',
+    location: 'Toronto, Canada',
     bullets: [
         {
             lead: [{ text: 'Develop and maintain' }],
@@ -99,6 +98,7 @@ const pastWorkHistory: WorkEntry[] = [
         companyUrl: 'https://www.grindr.com',
         dates: 'Sep 2021 - Oct 2023',
         employmentType: 'Permanent Full-time',
+        workMode: 'Remote',
         bullets: [
             {
                 lead: [{ text: 'Led ' }, { text: 'full-stack web application', tone: 'tech', href: 'https://web.grindr.com', external: true }],
